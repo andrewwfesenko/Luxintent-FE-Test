@@ -1,0 +1,11 @@
+"title","identifier","content"
+"Luxinten Page","luxinten-page","<div class=""hat-row"">
+<div class=""hat-inner""><a href=""#""> <img src=""http://magedemo.solwininfotech.com/magento2/freego/theme/pub/media/wysiwyg/home/advt-3_1.jpg"" alt=""advt-3""> </a></div>
+<div class=""hat-inner""><a href=""#""> <img src=""http://magedemo.solwininfotech.com/magento2/freego/theme/pub/media/wysiwyg/home/advt-4_1.jpg"" alt=""advt-4""> </a></div>
+<div class=""hat-inner""><a href=""#""> <img src=""http://magedemo.solwininfotech.com/magento2/freego/theme/pub/media/wysiwyg/home/advt-5_1.jpg"" alt=""advt-5""></a></div>
+<div class=""clearfix"">&nbsp;</div>
+</div>
+<h1>Featured Products</h1>
+<p>{{widget type=""Magento\CatalogWidget\Block\Product\ProductsList"" show_pager=""0"" products_count=""5"" template=""Magento_CatalogWidget::product/widget/content/grid.phtml"" conditions_encoded=""^[`1`:^[`type`:`Magento||CatalogWidget||Model||Rule||Condition||Combine`,`aggregator`:`all`,`value`:`1`,`new_child`:``^]^]""}}</p>
+<h1>Static Block</h1>
+<p>{{widget type=""Magento\Cms\Block\Widget\Block"" template=""widget/static_block/default.phtml"" block_id=""16""}}</p>"
