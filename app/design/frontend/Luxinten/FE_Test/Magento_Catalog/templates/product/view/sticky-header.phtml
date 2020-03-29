@@ -1,0 +1,83 @@
+<?php
+    $product = \Magento\Framework\App\ObjectManager::getInstance()->get(\Magento\Framework\Registry::class)->registry('product');
+    $currency = \Magento\Framework\App\ObjectManager::getInstance()->get('Magento\Directory\Model\Currency');
+    $imageUrl = $this->helper('Magento\Catalog\Helper\Image')
+                        ->init($product, 'product_base_image')
+                        ->constrainOnly(TRUE)
+                        ->keepAspectRatio(TRUE)
+                        ->keepTransparency(TRUE)
+                        ->keepFrame(FALSE)
+                        ->resize(100, 100)->getUrl();
+    $currencyCode = $currency->getCurrencySymbol(); 
+    $regularPrice = $product->getPriceInfo()->getPrice('regular_price');
+?>
+<div class="sticky-header">
+    <div class="sticky-inner">
+        <img class="product-image" src="<?= $imageUrl ?>" />
+        <h1 class="product-name"><?= $product->getName(); ?></h1>
+        <div class="cms-block"><?= $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('luxinten-block')->toHtml(); ?></div>
+        <div class="action">
+            <div class="normal-price">
+                <div class="product-price">
+                    <span class="price-label">As low as</span>
+                    <span class="price"><?= $currencyCode ?><?= $regularPrice->getMinRegularAmount(); ?></span>
+                </div>
+            </div>
+            <button type="button" title="Add to Cart" class="action primary tocart" id="product-sticky-addtocart">
+                <span>Add to Cart</span>
+            </button>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<div class="sticky-overlay"></div>
+
+<script>
+require(['jquery', 'jquerySticky'], function($){
+    $(document).ready(function() {
+        $("#product-sticky-addtocart").click(function() {
+            $("#product-addtocart-button").click();
+            $("html, body").animate({
+                scrollTop: $('.product-info-main').offset().top - 50
+            }, 1000);
+        });
+        if ($(window).width() > 767) {
+            $(".sticky-header").sticky({
+                topSpacing: 53,
+                zIndex: 9,
+                getWidthFrom: 'body',
+                responsiveWidth: true
+            });
+        } else {
+            $(".sticky-header").sticky({
+                topSpacing: 0,
+                zIndex: 9,
+                getWidthFrom: 'body',
+                responsiveWidth: true
+            });
+        }
+        $(window).resize(function() {
+            if ($(window).width() > 767) {
+                $(".sticky-header").sticky({
+                    topSpacing: 53,
+                    zIndex: 9,
+                    getWidthFrom: 'body',
+                    responsiveWidth: true
+                });
+            } else {
+                $(".sticky-header").sticky({
+                    topSpacing: 0,
+                    zIndex: 9,
+                    getWidthFrom: 'body',
+                    responsiveWidth: true
+                });
+            }
+        });
+        $(".sticky-header").hover(function() {
+            $(".sticky-overlay").fadeIn();
+        }, function() {
+            $(".sticky-overlay").fadeOut();
+        });
+    });
+});
+</script>

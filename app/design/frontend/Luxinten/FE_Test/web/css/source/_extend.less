@@ -1,0 +1,71 @@
+& when (@media-common = true) {
+    .cms-luxinten-page {
+        .hat-row {
+            .hat-inner {
+                padding: 10px 0;
+                width: 100%;
+                box-sizing: border-box;
+                img {
+                    width: 100%;
+                }
+            }
+        }
+        h1 {
+            text-align: center;
+            position: relative;
+            line-height: 60px;
+            font-size: 16px;
+            text-transform: uppercase;
+            margin: 20px 0;
+            &:before, &:after {
+                background-image: url('http://magedemo.solwininfotech.com/magento2/freego/theme/pub/static/version1566462796/frontend/Solwin/freego/en_US/images/stripes.png');
+                background-repeat: no-repeat;
+                content: "";
+                display: block;
+                height: 11px;
+                position: absolute;
+                top: 25px;
+                width: 90px;
+            }
+            &:before {
+                left: 0;
+            }
+            &:after {
+                right: 0;
+                transform: rotate(180deg);
+            }
+        }
+        .block.widget {
+            .products-grid {
+                .product-item {
+                    margin-bottom: 30px;
+                }
+            }
+        }
+    }
+
+}
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .cms-luxinten-page {
+        .hat-row {
+            margin: 0 -10px;
+            .hat-inner {
+                padding: 0 10px;
+                float: left;
+                width: 33.33%;
+            }
+        }
+        h1 {
+            font-size: 24px;
+            &:before, &:after {
+                width: 140px;
+            }
+            &:before {
+                left: 25%;
+            }
+            &:after {
+                right: 25%;
+            }
+        }
+    }
+}
